@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+	font-family:'Oxygen' sans-serif;
+}
+#gray{
+	background-color: rgba(1,1,1,0.50);
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: none;
+	z-index: 14;
+}
+.header-top{
+	width: 100%;
+	height: 70px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+}
+.menu{
+	display: flex;
+}	
+.menu li{
+	padding-right: 60px;
+	font-size: 17px;
+	list-style: none;
+}
+.menu a{
+	text-transform: uppercase;
+	color: #000;
+	text-decoration: none;
+}
+.menu a::after{
+	content: '';
+	display: block;
+	width: 100%;
+	height: 2px;
+	background-color: #a63a3f;
+	transform: translateY(24px) scale(0);
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.menu a:hover::after{
+	text-decoration: none;
+	transform: translateY(25px) scale(1);
+}
+.login{
+	list-style: none;
+	font-size: 17px;
+	margin-right: 15px;
+}
+.login a{
+		text-transform: uppercase;
+	color: #000;
+	text-decoration: none;
+}
+
+.logo a{
+	text-decoration: none;
+	color: #000;
+	font-size: 30px;
+	padding-left: 3%;
+}
+.header-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 500px;	
+	background-image: url(https://newsib.net/wp-content/uploads/2016/12/c9c7720baf117f10234972cf163cda31.jpg);
+	background-blend-mode: multiply;
+	background-size: cover;  
+	flex-direction: column; 
+}
+.header-center h1{
+	font-size: 70px;
+	color:#fff;
+}
+.header-center h3{
+	font-size: 50px;
+	color:#fff;
+}
+
+
+
+@@media (max-width: 900px){
+	.info{
+		-webkit-flex-direction: column;
+		-moz-flex-direction: column;
+		-ms-flex-direction: column;
+		-o-flex-direction: column;
+		flex-direction: column;
+		align-items: 
+	}
+	.wrap{
+		padding-top: 300px;
+		margin: 10px;
+	}
+	.headertop{
+		-webkit-flex-direction: column;
+		-moz-flex-direction: column;
+		-ms-flex-direction: column;
+		-o-flex-direction: column;
+		flex-direction: column;
+		justify-content: center;
+	}
+}
+#registerform{
+	margin: 0 auto;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	width: 350px;
+	background-color: #48529263;
+	height: 400px;
+	border: 1px solid #48529263;
+	border-radius: 20px;
+	z-index: 15;
+	flex-direction: column;
+	transition: 1.5s;
+}
+.formreg{
+	width: 275px;
+	margin: 0px auto;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+.input{
+	width: 260px;
+	padding:5px;
+	margin-bottom: 30px;
+}
+input[type="submit"] {
+cursor: pointer;
+}
+.formreg h2{
+	margin-bottom: 30px;
+    color: #e3e3e3;
+}
+.close{
+	position: absolute;
+	margin: 0 0 0 150px;
+	padding-bottom: 370px;
+	padding-left: 20px;
+	cursor: pointer;
+}
+.news{
+	width:95%px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.article img{
+	width: 350px;
+	height: 300px;
+}
+.article{
+	width: 350px;
+	margin-right: 40px;
+	margin-top: 50px;
+}
+.article h2{
+	display: flex;
+	justify-content: center;
+	color:#001138;
+	margin-bottom: 10px;
+}
+.news-center-item{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background-image: url(http://www.webincomejournal.com/images/uploads/2015/09/make-successful-blog.jpg);
+	background-size: cover;
+	height: 600px;
+	background-blend-mode: multiply;
+	background-size: cover;  
+	flex-direction: column; 
+}
+.button{
+	display: flex;
+	justify-content: center;
+	width: 80px;
+	margin-top: 15px;
+}
+.article a{
+	text-decoration: none;
+	color: #462828;
+}
+.text{
+	display: flex;
+	border: 1px solid #0000001f;
+	margin-top: 4px;
+	justify-content: flex-start;
+}
+.footer{
+	width: 100%;
+	height: 75px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px;
+	background-color: #524444;
+	bottom: 0;
+}
+.admin-center-item{
+	width: 100%;
+	height: 1000px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.table-item{
+	margin-top: 150px;
+}
+table td{
+	padding: 5px 10px 0;
+	text-align: center;
+}
+td a{
+	text-decoration: none;
+	color: #673ab7;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
