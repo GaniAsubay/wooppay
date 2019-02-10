@@ -87,6 +87,7 @@ global $mysqli;
 connectionDB();
 $result = $mysqli->query("DELETE FROM news WHERE id=".$_GET['id']);
 closeDB();
+echo "<script>self.location='http://apss/admin.php';</script>";
 }
 function get_edit_item_form()
 {
@@ -134,6 +135,7 @@ function update_item()
 	connectionDB();
 	$result=$mysqli->query("UPDATE news SET title='".$title."',text='".$text."',author='".$author."', date='".$date."'WHERE id=".$_GET['id']);
 	closeDB();
+	echo "<script>self.location='http://apss/admin.php';</script>";
 }
 function get_add_item_form()
 {
@@ -173,4 +175,5 @@ function add_item()
 	connectionDB();
 	$result=$mysqli->query("INSERT INTO `news` (`id`, `title`, `text`, `author`, `date`) VALUES (NULL, '".$title."', '".$text."', '".$author."', '".$date."')");
 	closeDB();
+	echo "<script>self.location='http://apss/admin.php';</script>";
 }
