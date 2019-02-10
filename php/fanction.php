@@ -161,7 +161,6 @@ echo '<td><input type="submit" value="Сохронить"></td>';
 echo '</tr>';
 echo '</table>';
 echo '</form>';
-add_item();
 }
 
 function add_item()
