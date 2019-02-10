@@ -32,7 +32,7 @@ function adminlog(){
 	connectionDB();
 	$sql = mysqli_query($mysqli,"SELECT *  FROM `login` WHERE `login`= '$login' AND `password`= '$password'");
 	if(mysqli_num_rows($sql) !== 0) {
-		header("Location:/admin.php");
+		echo "<script>self.location='http://apss/admin.php';</script>";
 	} 
 }
 function get_news_view(){

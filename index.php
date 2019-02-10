@@ -1,4 +1,7 @@
-<?php require ('php/header.php') ?>
+<?php require ('php/header.php');
+include_once('php/fanction.php');
+ $admin = adminlog();
+ ?>
 	<div class="header-center">	
 		<?php include_once('show.php') ?>
 	</div>

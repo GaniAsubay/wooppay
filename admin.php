@@ -1,6 +1,5 @@
 <?php
 include_once('php/fanction.php');
-$admin = adminlog();
 ?>
 <!DOCTYPE html>
 <html lang="ru">

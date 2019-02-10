@@ -1,6 +1,4 @@
 <?php
-include_once('php/fanction.php');
-$admin = adminlog();
 ?>
 <div id="registerform">
 			<div class="close">
@@ -8,7 +6,7 @@ $admin = adminlog();
 			</div>
 			<div class="formreg">
 				
-				<form action="show.php" method="POST">
+				<form action="index.php" method="POST">
 					<h2>Войти</h2>
 					<input type="text" placeholder="Логин" name="login" class="input" required>
 					<input type="password" placeholder="Пароль" name="password" class="input" required>
