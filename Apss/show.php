@@ -1,5 +1,3 @@
-<?php
-?>
 <div id="registerform">
 			<div class="close">
 				<img src="images/close.png" alt="close" id="close" onclick="show('none')">

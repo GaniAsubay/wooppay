@@ -74,11 +74,12 @@ body{
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 500px;	
-	background-image: url(https://newsib.net/wp-content/uploads/2016/12/c9c7720baf117f10234972cf163cda31.jpg);
+	height: 600px;	
+	background-image: url(https://marketingmattersinbound.com/wp-content/uploads/2017/09/shutterstock_122664079.jpg);
 	background-blend-mode: multiply;
-	background-size: cover;  
 	flex-direction: column; 
+	background-size: 100% 100%; 
+	background-repeat: no-repeat;
 }
 .header-center h1{
 	font-size: 70px;
@@ -182,7 +183,7 @@ cursor: pointer;
 	width: 100%;
 	background-image: url(http://www.webincomejournal.com/images/uploads/2015/09/make-successful-blog.jpg);
 	background-size: cover;
-	height: 600px;
+	height: 100vh;
 	background-blend-mode: multiply;
 	background-size: cover;  
 	flex-direction: column; 
@@ -215,7 +216,7 @@ cursor: pointer;
 }
 .admin-center-item{
 	width: 100%;
-	height: 1000px;
+	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -240,33 +241,36 @@ td a{
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 500px;	
+	height: 600px;	
 	background-image: url(https://metanpropan.ru/wp-content/uploads/2018/08/weber-kontakt.jpg);
 	background-blend-mode: multiply;
-	background-size: cover;  
 	flex-direction: column; 
+	background-size: 100% 100%; 
+	background-repeat: no-repeat;
 }
 .about-center{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 500px;	
+	height: 600px;	
 	background-image: url(http://www.canadaantibacterialsolutions.com/wp-content/uploads/2015/09/information.jpg);
 	background-blend-mode: multiply;
-	background-size: cover;  
+	background-size: 100% 100%;
 	flex-direction: column; 
+	background-repeat: no-repeat;
 }
 .partners-center{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 500px;	
+	height: 600px;	
 	background-image: url(https://vcci.com.ua/wp-content/uploads/2018/03/partnery-1080x508.jpg);
 	background-blend-mode: multiply;
-	background-size: cover;  
 	flex-direction: column; 
+	background-size: 100% 100%; 
+	background-repeat: no-repeat;
 }
 .about{
 	display: flex;
@@ -290,6 +294,22 @@ td a{
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: center;
+}
+.article-center{
+	width: 80%;
+	margin: 0 auto;
+}
+.article-items{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.article-items img {
+	width: 800px;
+	height: 600px;
+}
+.article-items h1{
+	margin-bottom: 20px;
 }
 
 

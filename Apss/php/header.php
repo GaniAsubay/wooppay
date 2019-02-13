@@ -19,6 +19,6 @@
 			<li><a href="../partners.php">Наши партнеры </a></li>
 		</ul>
 		<form name="clik" method="post" action="form.js">
-				<li class="login"><a href="#" name="Application" id="button" onclick="show('flex')">Войти</a></li>
+				<li class="login"><a href="#" onclick="show('flex')">Войти</a></li>
 			</form>
 	</div>	

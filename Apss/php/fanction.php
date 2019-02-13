@@ -1,4 +1,8 @@
 <?php 
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
 /*connection db*/
 function connectionDB(){
 	global $mysqli;
@@ -39,6 +43,13 @@ function get_partners() {
 	closeDB();
 	return resultToArray ($result);
 }
+function get_article($id) {
+global $mysqli;
+connectionDB();
+$result = $mysqli->query("SELECT * FROM `news` WHERE `id` = ".$id."");
+closeDB();
+return resultToArray($result);
+}
 function resultToArray ($result) {
 	$array = array();
 	while (($row = $result-> fetch_assoc()) != false) {
@@ -49,19 +60,33 @@ function resultToArray ($result) {
 /*query db*/
 /*admin*/
 function adminlog(){
+	if(isset($_POST['login']) && isset($_POST['password'])){
 	$login = $_POST['login'];
 	$password = $_POST['password'];
-	$but = $_POST['sub'];
 	global $mysqli;
 	connectionDB();
 	$sql = mysqli_query($mysqli,"SELECT *  FROM `login` WHERE `login`= '$login' AND `password`= '$password'");
-	if(mysqli_num_rows($sql) !== 0) {
-		echo "<script>self.location='http://apss/admin.php';</script>";
-	} 
+	if(mysqli_num_rows($sql) !== 0) 
+		echo "<script>self.location='http://apss/admin.php';</script>"; 
+}
 }
 /*admin*/
 /*function view*/
 class view{
+	function get_article_view(){
+		$article = get_article($_GET["id"]);
+		for ($i=0; $i <count($article) ; $i++) {
+		echo "<div class = 'article-items'>";
+		echo "<h1>";
+		echo $article[$i]['title'],"<br>";
+		echo "</h1>";
+		echo "<img src= images/news-items/".$article[$i]['title'].".jpg>","<br>";
+		echo "<p>".$article[$i]["text"],"</p>", "<br>";
+		echo "<h4>Автор: ".$article[$i]["author"]." </h4>";
+		echo "<h4>Дата: ".$article[$i]["date"]." </h4>";
+		echo "</div>";
+	}
+	}
 	function get_news_view(){
 		$news = get_News();
 		for ($i=0; $i <count($news) ; $i++) {
@@ -78,7 +103,7 @@ class view{
 			echo "<h4>Дата поста : </h4";
 			echo "<br>";
 			echo $news[$i]["date"],"<br>";
-			echo "<a href=index.php?id=".$news[$i]["id"]."><div class='button'>Подробнее</div></a>";
+			echo "<a href=/article.php?id=".$news[$i]["id"]."><div class='button'>Подробнее</div></a>";
 			echo "</div>";
 		}
 	}
@@ -187,24 +212,23 @@ class adminNews{
 		closeDB();
 		while (($row = $result-> fetch_assoc())!= false)
 		{
-			$array[] = $row;
 			echo '<form name= "editform" action="'.$_SERVER['PHP_SELF'].'?action=update&id='.$_GET['id'].'" method="POST">';
 			echo '<table>';
 			echo '<tr>';
 			echo '<td>Название</td>';
-			echo '<td><input type="text" name="title" value="'.$row['title'].'" ></td>';
+			echo '<td><input type="text" name="title" value="'.$row['title'].'" required ></td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td>Текст</td>';
-			echo '<td><textarea name="text">'.$row['text'].'</textarea></td>';
+			echo '<td><textarea name="text" required>'.$row['text'].'</textarea></td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td>Автор</td>';
-			echo '<td><input type="text" name="author" value="'.$row['author'].'" ></td>';
+			echo '<td><input type="text" name="author" value="'.$row['author'].'"required ></td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td>Дата</td>';
-			echo '<td><input type="date" name="date" value="'.$row['date'].'" ></td>';
+			echo '<td><input type="date" name="date" value="'.$row['date'].'"required ></td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td><input type="submit" value="Изменить"></td>';
@@ -231,19 +255,19 @@ class adminNews{
 		echo '<table>';
 		echo '<tr>';
 		echo '<td>Название</td>';
-		echo '<td><input type="text" name="title" value="" /></td>';
+		echo '<td><input type="text" name="title" value="" required></td>';
 		echo '</tr>';
 		echo '<tr>';
 		echo '<td>Текст</td>';
-		echo '<td><textarea name="text" name="text" value=""></textarea></td>';
+		echo '<td><textarea name="text"  value="" required></textarea></td>';
 		echo '</tr>';
 		echo '<tr>';
 		echo '<td>Автор</td>';
-		echo '<td><input type="text" name="author" value="" /></td>';
+		echo '<td><input type="text" name="author" value="" required></td>';
 		echo '</tr>';
 		echo '<tr>';
 		echo '<td>Дата</td>';
-		echo '<td><input type="date" name="date"/></td>';
+		echo '<td><input type="date" name="date" required></td>';
 		echo '</tr>';
 		echo '<tr>';
 		echo '<td><input type="submit" value="Сохронить"></td>';
@@ -305,7 +329,6 @@ class adminContact{
 		closeDB();
 		while (($row = $result-> fetch_assoc())!= false)
 		{
-			$array[] = $row;
 			echo '<form name= "editform" action="'.$_SERVER['PHP_SELF'].'?action=update&id='.$_GET['id'].'" method="POST">';
 			echo '<table>';
 			echo '<tr>';
@@ -429,7 +452,6 @@ class adminAbout{
 		closeDB();
 		while (($row = $result-> fetch_assoc())!= false)
 		{
-			$array[] = $row;
 			echo '<form name= "editform" action="'.$_SERVER['PHP_SELF'].'?action=update&id='.$_GET['id'].'" method="POST">';
 			echo '<table>';
 			echo '<tr>';
@@ -438,7 +460,7 @@ class adminAbout{
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td>Информация</td>';
-			echo '<td><textarea name="info_company">'.$row['info_company'].'</textarea></td>';
+			echo '<td><textarea name="info_company" required>'.$row['info_company'].'</textarea></td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td>Адрес</td>';
@@ -479,7 +501,7 @@ class adminAbout{
 		echo '</tr>';
 		echo '<tr>';
 		echo '<td>Информация</td>';
-		echo '<td><textarea name="info_company">'.$row['info_company'].'</textarea></td>';
+		echo '<td><textarea name="info_company" required></textarea></td>';
 		echo '</tr>';
 		echo '<tr>';
 		echo '<td>Адрес</td>';
@@ -541,7 +563,6 @@ class adminPartners{
 		closeDB();
 		while (($row = $result-> fetch_assoc())!= false)
 		{
-			$array[] = $row;
 			echo '<form name= "editform" action="'.$_SERVER['PHP_SELF'].'?action=update&id='.$_GET['id'].'" method="POST">';
 			echo '<table>';
 			echo '<tr>';
@@ -550,13 +571,13 @@ class adminPartners{
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td>Проект</td>';
-			echo '<td><textarea name="name_project">'.$row['name_project'].'</textarea></td>';
+			echo '<td><textarea name="name_project" required>'.$row['name_project'].'</textarea></td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td>Статус</td>';
 			echo '<td><p><select name="status">';
             echo '<option value="В разработке">В разработке</option>';
-            echo '<option value="Выполнено">Выполнено</option>';
+            echo '<option value="Выполнено" >Выполнено</option>';
             echo '</select></p></td>';
 			echo '</tr>';
 			echo '<tr>';
@@ -594,11 +615,11 @@ class adminPartners{
 		echo '</tr>';
 		echo '<tr>';
 		echo '<td>Проект</td>';
-		echo '<td><textarea name="name_project"></textarea></td>';
+		echo '<td><textarea name="name_project" required></textarea></td>';
 		echo '</tr>';
 		echo '<tr>';
 		echo '<td>Статус</td>';
-		echo '<td><p><select name="status">';
+		echo '<td><p><select name="status" >';
         echo '<option value="В разработке">В разработке</option>';
         echo '<option value="Выполнено">Выполнено</option>';
         echo '</select></p> </td>';
